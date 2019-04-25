@@ -194,18 +194,18 @@ myFile = SD.open("datamega.txt", FILE_WRITE);
  Serial.print("CurrentTime in MS is");
                                       Serial.println(currentint);
                    
-                    if(currentTime%38>19)
+                    if(currentTime%34>=17)
                     
                     {
-                      az=360-(currentTime%19)*20;
+                      az=(360-(360/17))-(currentTime%17)*(360/17);
                       
                     }
                     else
                     {
-                    az=(currentTime%19)*20;
+                    az=(currentTime%17)*(360/17);
                     }
 
-                    ele=(currentTime/19)*10;                  
+                    ele=(currentTime/17)*12;                  
                     
                      sprintf(dataStr, "%02d,%02d,%03d,%03d",svid,cno,az,ele);
                      myFile.println(dataStr);

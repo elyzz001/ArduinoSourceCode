@@ -7,9 +7,9 @@ int input=12;
 
 void setup() {
   // put your setup code here, to run once:
-servo1.attach(9);
+servo1.attach(9,164,2500);
 servo2.attach(10);
-servo1.write(140);
+servo1.write(20);
 delay(50);
 pinMode(12,INPUT);
 digitalWrite(12, LOW);
@@ -42,6 +42,10 @@ void loop()
      {
        funct();
      }
+   /*  while(1)
+     {
+     
+     }*/
      //servo1.write();
      //delay(1000);
 
@@ -73,30 +77,44 @@ void funct()
 {
 //servo1.write(30);
 //delay(1000);
-for(pos1 = 130; pos1 >= 30; pos1 -=10)
+for(pos1 = 30; pos1<=170; pos1 +=10)
+  {
+    if(digitalRead(12) == LOW)
     {
-     for(pos2 ; pos2 <= 180; pos2 +=10)
+      break;
+    }
+     for(pos2 ; pos2 <= 170; pos2 +=10)
      {
-
-      {
+      if(digitalRead(12) == LOW)
+       {
+      break;
+       }
+     
       servo2.write(pos2);
       delay(1000);
-      }
+      
      }
     
      servo1.write(pos1);
      delay(1000);
 
-for(pos2 = 170; pos2>=10; pos2 -=10)
-{
-  servo2.write(pos2);
-  delay(1000);
-}
-    pos1-=10;
+    for(pos2 = 160; pos2>=10; pos2 -=10)
+      {
+        if(digitalRead(12) == LOW)
+        {
+         break;
+       }
+        servo2.write(pos2);
+        delay(1000);
+      }
+    pos1+=10;
+    if (pos1<170){
     servo1.write(pos1);
     delay(1000);
-    pos2 +=20;
     }
+    
+    pos2 +=20;
+ }
     
 
    
